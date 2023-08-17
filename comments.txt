@@ -1,0 +1,40 @@
+1.
+Stream<int> boatStream() async* {
+  for (int i = 0; i <= 10; i++) {
+    print('boat number is sent $i');
+    // Future.delayed(const Duration(seconds: 2));
+    yield i;
+  }
+}
+
+//the stream is initiated from boatStream(), then it starts listening to the value that came from the method and printing here.
+void main() async {
+  Stream stream = boatStream();
+  stream.listen(
+    (event) {
+      print('boat is received ${event.toString()}');
+    },
+    onDone: () {
+      debugPrint("You've reached at the end");
+    },
+  );
+}
+
+2.
+import 'package:bloc/bloc.dart';
+
+class CounterCubit extends Cubit<int> {
+  //creating a constructor and setting the default state to 0.
+  CounterCubit() : super(0);
+  //state is 0.
+  void increment() => emit(state + 1);
+  void decrement() => emit(state - 1);
+}
+
+void main() {
+  CounterCubit cubit = CounterCubit();
+  // cubit
+  print(cubit.state);
+  cubit.increment();
+  print(cubit.state);
+}
