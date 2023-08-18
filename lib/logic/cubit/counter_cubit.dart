@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:bloc_example/cubit/counter_state.dart';
+import 'package:bloc_example/logic/cubit/counter_state.dart';
+
+import 'counter_state.dart';
 
 class CounterCubit extends Cubit<CounterState> {
   //initialize the state of CounterCubit instance.
